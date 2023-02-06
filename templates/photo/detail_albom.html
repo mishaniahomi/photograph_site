@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+
+{% if albom %}
+<div class="section wf-section">
+ <div class="w-container">
+  <div class="photo-row w-row">
+   <div class="w-col w-col-4">
+    <h1 class="photo-page-title">{{ albom.name }}</h1>
+    <div class="photo-info-text">{{ albom.date|date:"d.m.Y" }}</div>
+    <div class="description-text w-richtext" ><p style="margin-top:0;margin-bottom:10px;text-align: justify;line-height:2;font-size:28px;">{{ albom.description }}</p></div>
+   </div>
+   <div class="w-col w-col-8">
+    <div class="w-richtext">
+     <figure data-rt-type="image" data-rt-align="fullwidth" data-rt-max-width="100" class="w-richtext-align-fullwidth" data-rt-max-height="56.25" style="max-width: 70%;">
+      <div>
+       <img src="{{ albom.picture.url }}">
+      </div>
+     </figure>
+     {% for photo in photos%}
+     <figure data-rt-type="image" data-rt-align="fullwidth" data-rt-max-width="100" class="w-richtext-align-fullwidth" data-rt-max-height="56.25" style="max-width: 70%;">
+      <div>
+       <img src="{{ photo.picture.url }}" >
+      </div>
+     </figure>
+     {% endfor %}
+    </div>
+   </div>
+  </div>
+ </div>
+{% endif %}
+
+ <div class="all-images w-container">
+  <h1 class="photo-page-title center">ВСЕ АЛЬБОМЫ</h1>
+  <div class="gallery-wrapper w-dyn-list">
+   <div role="list" class="w-dyn-items w-row">
+    {% for i in alboms %}
+                <div role="listitem" class="w-dyn-item w-col w-col-3">
+                    <a href="{{ i.get_absolute_url }}" class="photo-link-block w-inline-block">
+                        <img src="{{ i.picture.url }}" alt="">
+                        <div class="title">{{ i.name }}</div>
+                    </a>
+                </div>
+                {% endfor %}
+   </div>
+  </div>
+  {% load photo_tags %}
+
+{% get_no_alboms_photo as photoes %}
+  <h1 class="photo-page-title center">ВСЕ ФОТОГРАФИИ</h1>
+     <div class="gallery-wrapper w-dyn-list">
+   <div role="list" class="w-dyn-items w-row">
+    {% for i in photoes %}
+                <div role="listitem" class="w-dyn-item w-col w-col-4">
+                    <a href="" class="photo-link-block w-inline-block">
+                        <img src="{{ i.picture.url }}" alt="">
+                        <div class="title">{{ i.name }}</div>
+                    </a>
+                </div>
+                {% endfor %}
+   </div>
+  </div>
+
+ </div>
+
+
+{% endblock %}

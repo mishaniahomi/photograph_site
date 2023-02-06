@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="section">
+ <div class="w-container">
+ <div class="w-row">
+  <div class="w-col w-col-4">
+   <img src="{{ about_data.picture.url }}" sizes="(max-width: 479px) 96vw, (max-width: 721px) 97vw, (max-width: 767px) 700px, (max-width: 991px) 354px, 460px" alt="" class="about-photo">
+  </div>
+  <div class="w-col w-col-8"><div class="w-richtext">
+   <h2>{{ about_data.title }}</h2><p>{{ about_data.text }}</p>
+  </div>
+  </div>
+ </div>
+</div>
+</div>
+
+
+{% endblock %}

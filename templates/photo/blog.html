@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="wf-section">
+ <div class="w-container">
+  <div class="w-dyn-list">
+   <div role="list" class="w-dyn-items">
+       {% for i in blogs%}
+    <div role="listitem" class="blog-list-item w-dyn-item">
+     <a href="{{ i.get_absolute_url }}" class="blog-link w-inline-block">
+      <div class="w-row"><div class="w-col w-col-4">
+       <h1 class="blog-title">{{ i.title }}</h1>
+      </div>
+       <div class="w-col w-col-8">
+        <p>{{ i.text|safe|linebreaks|truncatewords:50 }}</p>
+       </div>
+      </div>
+     </a>
+    </div>
+       {% endfor %}
+   </div>
+  </div>
+ </div>
+</div>
+{% endblock %}
