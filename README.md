@@ -9,9 +9,9 @@
   <li>Галерея</li>
   <li>Услуги</li>
 </ul>
-<img src="./readme_assets/Screenshot_2023-02-06_11-01-12.png" width="100%">
-<img src="./readme_assets/Screenshot_2023-02-06_11-00-24.png" width="100%">
-<img src="./readme_assets/Screenshot_2023-02-06_11-03-44.png" width="100%">
+<img src="./readme_assets/1.bmp" width="100%">
+<img src="./readme_assets/2.bmp" width="100%">
+<img src="./readme_assets/3.bmp" width="100%">
 Также имеется более детальное описание услуги:
-<img src="./readme_assets/Screenshot_2023-02-06_11-03-58.png" width="100%">
+<img src="./readme_assets/4.bmp" width="100%">
 Также в данном проекте настроена админка Django для администрирования веб-сайта.
