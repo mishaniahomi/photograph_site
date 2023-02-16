@@ -1,70 +1,79 @@
 {% extends "base.html" %}
 {% load static %}
+{% load photo_tags %}
 {% block content %}
-
+{% get_no_alboms_photo as photoes %}
 
 
 {% if albom %}
-<div class="section wf-section">
- <div class="w-container">
-  <div class="photo-row w-row">
-   <div class="w-col w-col-4">
-    <h1 class="photo-page-title">{{ albom.name }}</h1>
-    <div class="photo-info-text">{{ albom.date|date:"d.m.Y" }}</div>
-    <div class="description-text w-richtext" ><p style="margin-top:0;margin-bottom:10px;text-align: justify;line-height:2;font-size:28px;">{{ albom.description }}</p></div>
-   </div>
-   <div class="w-col w-col-8">
-    <div class="w-richtext">
-     <figure data-rt-type="image" data-rt-align="fullwidth" data-rt-max-width="100" class="w-richtext-align-fullwidth" data-rt-max-height="56.25" style="max-width: 70%;">
-      <div>
-       <img src="{{ albom.picture.url }}">
+<div class="row">
+    <div class="col-md-4">
+         <div class="sidebar-sticky">
+            <h1 >{{ albom.name }}</h1>
+        <div >{{ albom.date|date:"d.m.Y" }}</div>
+        <div >
+            <p>{{ albom.description }}</p>
+        </div>
+         </div>
       </div>
-     </figure>
-     {% for photo in photos%}
-     <figure data-rt-type="image" data-rt-align="fullwidth" data-rt-max-width="100" class="w-richtext-align-fullwidth" data-rt-max-height="56.25" style="max-width: 70%;">
-      <div>
-       <img src="{{ photo.picture.url }}" >
-      </div>
-     </figure>
-     {% endfor %}
+    <div class="col-md-8" >
+        <div class="container-fluid" align="left">
+            <div class = "row">
+                <div align="left" class="col-md-12">
+                    <img class="card flex-md-row mb-4 box-shadow h-md-250" src="{{ albom.picture.url }}" width="100%">
+                    {% for photo in photos%}
+                        <img class="card flex-md-row mb-4 box-shadow h-md-250" src="{{ photo.picture.url }}" width="100%">
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
     </div>
-   </div>
-  </div>
  </div>
 {% endif %}
+<div class="col-md-12 text-center">
+<h1>ВСЕ АЛЬБОМЫ</h1>
+</div>
 
- <div class="all-images w-container">
-  <h1 class="photo-page-title center">ВСЕ АЛЬБОМЫ</h1>
-  <div class="gallery-wrapper w-dyn-list">
-   <div role="list" class="w-dyn-items w-row">
-    {% for i in alboms %}
-                <div role="listitem" class="w-dyn-item w-col w-col-3">
-                    <a href="{{ i.get_absolute_url }}" class="photo-link-block w-inline-block">
-                        <img src="{{ i.picture.url }}" alt="">
-                        <div class="title">{{ i.name }}</div>
-                    </a>
+<div class="row">
+            {% for i in alboms %}
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="{{ i.picture.url }}" alt="Thumbnail [100%x225]" style="height: 445px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22348%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20348%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1865bb7ed6b%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1865bb7ed6b%22%3E%3Crect%20width%3D%22348%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22116.70000076293945%22%20y%3D%22120.53999977111816%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
+                <div class="card-body">
+                    <h3>{{ i.name }}</h3>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+
+                      <a href="{{ i.get_absolute_url }}"  class="btn btn-sm btn-outline-secondary">Больше фото</a>
+
+                    </div>
+
+                  </div>
                 </div>
-                {% endfor %}
-   </div>
-  </div>
-  {% load photo_tags %}
-
-{% get_no_alboms_photo as photoes %}
-  <h1 class="photo-page-title center">ВСЕ ФОТОГРАФИИ</h1>
-     <div class="gallery-wrapper w-dyn-list">
-   <div role="list" class="w-dyn-items w-row">
-    {% for i in photoes %}
-                <div role="listitem" class="w-dyn-item w-col w-col-4">
-                    <a href="" class="photo-link-block w-inline-block">
-                        <img src="{{ i.picture.url }}" alt="">
-                        <div class="title">{{ i.name }}</div>
-                    </a>
-                </div>
-                {% endfor %}
-   </div>
-  </div>
-
- </div>
+              </div>
+            </div>
+  {% endfor %}
+          </div>
 
 
+
+
+<div class="col-md-12 text-center">
+    <h1>ВСЕ ФОТОГРАФИИ</h1>
+     </div>
+
+
+
+<div class="row">
+            {% for i in photoes %}
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="{{ i.picture.url }}" alt="Thumbnail [100%x225]" style="height: 445px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22348%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20348%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1865bb7ed6b%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1865bb7ed6b%22%3E%3Crect%20width%3D%22348%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22116.70000076293945%22%20y%3D%22120.53999977111816%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
+
+              </div>
+            </div>
+  {% endfor %}
+          </div>
 {% endblock %}

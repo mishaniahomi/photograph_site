@@ -45,6 +45,7 @@ class AboutMe(models.Model):
 class Blog(models.Model):
     title = models.CharField(max_length=100, verbose_name='Заголовок')
     text = models.TextField(verbose_name='Текст блога')
+    price = models.IntegerField(verbose_name='Стоимость', default=1000)
 
     class Meta:
         verbose_name = 'Услуги'

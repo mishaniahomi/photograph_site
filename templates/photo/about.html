@@ -2,21 +2,21 @@
 {% load static %}
 
 {% block content %}
-
-
-<div class="section">
- <div class="w-container">
- <div class="w-row">
-  <div class="w-col w-col-4">
-   <img src="{{ about_data.picture.url }}" sizes="(max-width: 479px) 96vw, (max-width: 721px) 97vw, (max-width: 767px) 700px, (max-width: 991px) 354px, 460px" alt="" class="about-photo">
-  </div>
-  <div class="w-col w-col-8"><div class="w-richtext">
-   <h2>{{ about_data.title }}</h2><p>{{ about_data.text }}</p>
-  </div>
-  </div>
- </div>
-</div>
-</div>
-
-
+<div class="row">
+      <div class="col-md-6">
+         <div class="sidebar-sticky">
+            <img src="{{ about_data.picture.url }}" width="100%">
+         </div>
+      </div>
+      <div class="col-md-6" >
+            <div class="container-fluid" align="left">
+                <div class = "row">
+                   <div align="left" class="col-md-12">
+                        <h2>{{ about_data.title }}</h2>
+                        <p>{{ about_data.text }}</p>
+                   </div>
+                </div>
+            </div>
+      </div>
+    </div>
 {% endblock %}

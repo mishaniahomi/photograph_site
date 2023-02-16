@@ -13,14 +13,6 @@ class Index(ListView):
         return Albom.objects.all()
 
 
-class DetatilBlog(DetailView):
-    model = Blog
-    pk_url_kwarg = 'blog_id'
-    context_object_name = 'blog'
-    template_name = 'photo/detail_blog.html'
-
-
-
 def detail_albom(request, albom_id):
     albom = get_object_or_404(Albom, pk=albom_id)
     photos = Photo.objects.filter(albom_id=albom_id)

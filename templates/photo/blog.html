@@ -2,27 +2,20 @@
 {% load static %}
 
 {% block content %}
+    <div class="container" >
+      <div class="card-deck mb-3">
+          {% for i in blogs%}
+            <div class="card mb-4 box-shadow" >
+              <div class="card-header">
+                <h4 class="my-0 font-weight-normal text-center">{{ i.title }}</h4>
+              </div>
+              <div class="card-body" >
+                <h1 class="card-title pricing-card-title text-center">{{ i.price }} ₽</h1>
+                  <p class="text-justify">{{ i.text}}</p>
 
-
-<div class="wf-section">
- <div class="w-container">
-  <div class="w-dyn-list">
-   <div role="list" class="w-dyn-items">
-       {% for i in blogs%}
-    <div role="listitem" class="blog-list-item w-dyn-item">
-     <a href="{{ i.get_absolute_url }}" class="blog-link w-inline-block">
-      <div class="w-row"><div class="w-col w-col-4">
-       <h1 class="blog-title">{{ i.title }}</h1>
+              </div>
+            </div>
+         {% endfor %}
       </div>
-       <div class="w-col w-col-8">
-        <p>{{ i.text|safe|linebreaks|truncatewords:50 }}</p>
-       </div>
-      </div>
-     </a>
     </div>
-       {% endfor %}
-   </div>
-  </div>
- </div>
-</div>
 {% endblock %}
