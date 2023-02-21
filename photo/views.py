@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.views.generic.list import ListView
-from django.views.generic import DetailView
 from .models import Albom, Photo, AboutMe, Blog
 
 
@@ -23,9 +22,9 @@ def detail_albom(request, albom_id):
 
 def blog(request):
     blogs = Blog.objects.all()
-    return render(request, 'photo/blog.html', {'blogs': blogs,'selector':1})
+    return render(request, 'photo/blog.html', {'blogs': blogs, 'selector': 1})
 
 
 def about(request):
     about_data = AboutMe.objects.first()
-    return render(request, 'photo/about.html', {'about_data': about_data,'selector':2})
+    return render(request, 'photo/about.html', {'about_data': about_data, 'selector': 2})

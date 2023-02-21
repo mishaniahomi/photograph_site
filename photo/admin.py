@@ -22,9 +22,9 @@ class PhotoAdmin(admin.ModelAdmin):
 
 
 class BlogAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'text')
-    list_display_links = ('id', 'title')
-    search_fields = ('title', 'text')
+    list_display = ('id', 'title', 'text', 'price')
+    list_display_links = ('id', 'title', 'price')
+    search_fields = ('title', 'text', 'price')
 
 
 admin.site.register(Albom, AlbomAdmin)
